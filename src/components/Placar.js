@@ -7,7 +7,6 @@ import Partida from './Partida';
 
 
 export default class Placar extends React.Component {
-
     constructor() {
         super()
         this.state = {
@@ -15,19 +14,16 @@ export default class Placar extends React.Component {
             gol_fora: 0
         }
     }
-
     marcarGolCasa() {
         this.setState({
             gol_casa: this.state.gol_casa + 1
         })
     }
-
     marcarGolFora() {
         this.setState({
             gol_fora: this.state.gol_fora + 1
         })
     }
-
     render() {
         const { partida, casa, visitante } = this.props;
         const gambiCSS = {float: 'left', 'marginRight': '35px', 'textAlign': 'center'}
@@ -44,7 +40,18 @@ export default class Placar extends React.Component {
                     <h3>Visitante</h3>
                     <Time nome={visitante.nome} gols={this.state.gol_fora} marcarGol={this.marcarGolFora.bind(this)}/>
                 </div>
+                <div>{this.props.clima}</div>
+                <div>{this.props.tempo}</div>
             </div>
         )
     }
+}
+
+Placar.propTypes = {
+    clima: React.PropTypes.string,
+    tempo: React.PropTypes.number.isRequired
+}
+
+Placar.defaultProps = {
+    clima: 'Seco'
 }

@@ -19,7 +19,7 @@ const dados = {
 export default class App extends React.Component {
     render() {
         return (
-            <Placar {...dados}/>
+            <Placar {...dados} clima={'Chuva'} tempo={98}/>
         )
         
     }
